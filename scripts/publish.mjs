@@ -6,6 +6,8 @@ const API_BASE = "https://dev.to/api";
 const ARTICLES_DIR = "articles";
 const STATE_PATH = ".devto-state.json";
 const API_KEY = process.env.DEVTO_API_KEY;
+const MAX_RATE_LIMIT_RETRIES = 20;
+const DEFAULT_RATE_LIMIT_WAIT_MS = 31_000;
 
 if (!API_KEY) {
   throw new Error("DEVTO_API_KEY is required");
@@ -13,7 +15,10 @@ if (!API_KEY) {
 
 const files = await findMarkdownFiles(ARTICLES_DIR);
 const state = await readState();
-let stateChanged = false;
+const remoteArticles = await request("/articles/me/all?per_page=1000", "GET");
+const remoteByArticleKey = new Map(
+  remoteArticles.map((article) => [articleKey(article.title, article.description), article]),
+);
 
 for (const file of files) {
   const source = await readFile(file, "utf8");
@@ -27,28 +32,34 @@ for (const file of files) {
   }
 
   const { metadata, body } = parseArticle(source, relativePath);
-  const articleId = metadata.devto_id ?? previous?.id;
+  const key = articleKey(metadata.title, metadata.description);
+  const recovered = metadata.devto_id == null && previous?.id == null
+    ? remoteByArticleKey.get(key)
+    : null;
+  const articleId = metadata.devto_id ?? previous?.id ?? recovered?.id;
   const article = toApiArticle(metadata, body);
+
+  if (recovered) {
+    console.log(`recover ${relativePath} -> ${recovered.url ?? `DEV.to #${recovered.id}`}`);
+  }
 
   const result = articleId
     ? await request(`/articles/${articleId}`, "PUT", { article })
     : await request("/articles", "POST", { article });
 
+  remoteByArticleKey.set(key, result);
+
   state[relativePath] = {
     id: result.id,
-    url: result.url ?? previous?.url ?? null,
+    url: result.url ?? previous?.url ?? recovered?.url ?? null,
     hash,
     published: metadata.published,
     zenn_published_at: metadata.zenn_published_at ?? previous?.zenn_published_at ?? null,
     synced_at: new Date().toISOString(),
   };
 
-  stateChanged = true;
+  await writeState(state);
   console.log(`${articleId ? "update" : "create"} ${relativePath} -> ${result.url ?? `DEV.to #${result.id}`}`);
-}
-
-if (stateChanged) {
-  await writeFile(STATE_PATH, `${JSON.stringify(state, null, 2)}\n`, "utf8");
 }
 
 async function findMarkdownFiles(directory) {
@@ -80,6 +91,14 @@ async function readState() {
     if (error?.code === "ENOENT") return {};
     throw error;
   }
+}
+
+async function writeState(state) {
+  await writeFile(STATE_PATH, `${JSON.stringify(state, null, 2)}\n`, "utf8");
+}
+
+function articleKey(title, description) {
+  return `${title ?? ""}\u0000${description ?? ""}`;
 }
 
 function parseArticle(source, file) {
@@ -183,17 +202,32 @@ function toApiArticle(metadata, body) {
   return article;
 }
 
-async function request(endpoint, method, body) {
+async function request(endpoint, method, body = null, attempt = 0) {
+  const headers = {
+    "api-key": API_KEY,
+    Accept: "application/vnd.forem.api-v1+json",
+    "User-Agent": "KentaroMorishita/devto-content GitHub Actions",
+  };
+
+  if (body != null) {
+    headers["Content-Type"] = "application/json";
+  }
+
   const response = await fetch(`${API_BASE}${endpoint}`, {
     method,
-    headers: {
-      "api-key": API_KEY,
-      Accept: "application/vnd.forem.api-v1+json",
-      "Content-Type": "application/json",
-      "User-Agent": "KentaroMorishita/devto-content GitHub Actions",
-    },
-    body: JSON.stringify(body),
+    headers,
+    ...(body == null ? {} : { body: JSON.stringify(body) }),
   });
+
+  if (response.status === 429 && attempt < MAX_RATE_LIMIT_RETRIES) {
+    const details = await response.text();
+    const waitMs = rateLimitWaitMs(response);
+    console.warn(
+      `${method} ${endpoint} rate-limited (429); retrying in ${Math.ceil(waitMs / 1000)}s${details ? `: ${details}` : ""}`,
+    );
+    await sleep(waitMs);
+    return request(endpoint, method, body, attempt + 1);
+  }
 
   if (!response.ok) {
     const details = await response.text();
@@ -201,4 +235,32 @@ async function request(endpoint, method, body) {
   }
 
   return response.json();
+}
+
+function rateLimitWaitMs(response) {
+  const retryAfter = response.headers.get("retry-after");
+
+  if (retryAfter) {
+    const seconds = Number(retryAfter);
+    if (Number.isFinite(seconds)) {
+      return Math.max(1_000, seconds * 1_000 + 1_000);
+    }
+
+    const retryAt = Date.parse(retryAfter);
+    if (!Number.isNaN(retryAt)) {
+      return Math.max(1_000, retryAt - Date.now() + 1_000);
+    }
+  }
+
+  const reset = Number(response.headers.get("x-ratelimit-reset"));
+  if (Number.isFinite(reset) && reset > 0) {
+    const resetAt = reset > 1_000_000_000_000 ? reset : reset * 1_000;
+    return Math.max(1_000, resetAt - Date.now() + 1_000);
+  }
+
+  return DEFAULT_RATE_LIMIT_WAIT_MS;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
