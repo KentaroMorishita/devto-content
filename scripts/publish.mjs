@@ -55,6 +55,8 @@ async function findMarkdownFiles(directory) {
   const found = [];
 
   for (const entry of entries) {
+    if (entry.name.startsWith("_")) continue;
+
     const fullPath = path.join(directory, entry.name);
 
     if (entry.isDirectory()) {
