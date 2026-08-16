@@ -1,0 +1,11 @@
+{
+  "name": "devto-content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "publish": "node scripts/publish.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
