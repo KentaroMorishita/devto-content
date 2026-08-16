@@ -1,6 +1,7 @@
 ---
 title: "Article title"
 published: false
+date: "2026-08-16T00:00:00+09:00"
 tags: seseragi, programming
 description: "Short description for DEV.to"
 series:
