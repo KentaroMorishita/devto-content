@@ -38,7 +38,7 @@ jobs:
         run: npm run publish
 
       - name: Commit publish state
-        if: env.DEVTO_API_KEY != ''
+        if: always() && env.DEVTO_API_KEY != ''
         run: |
           if git diff --quiet -- .devto-state.json; then
             echo "Publish state unchanged"
