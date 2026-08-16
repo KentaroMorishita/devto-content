@@ -6,5 +6,149 @@
     "published": true,
     "zenn_published_at": "2026-07-31T08:12:00+09:00",
     "synced_at": "2026-08-16T09:31:37.259Z"
+  },
+  "articles/seseragi-chatgpt-fights.md": {
+    "id": 4410382,
+    "url": "https://dev.to/kentaromorishita/im-building-a-programming-language-by-arguing-with-chatgpt-4ij5",
+    "hash": "dfe20d8d50b0fa94a806777c1be0f5d9a91abb23c820dbdbc9b518d11f9a40d3",
+    "published": true,
+    "zenn_published_at": "2026-08-14T18:35:00+09:00",
+    "synced_at": "2026-08-16T13:52:37.030Z"
+  },
+  "articles/seseragi-component-just-function.md": {
+    "id": 4410364,
+    "url": "https://dev.to/kentaromorishita/couldnt-a-component-just-be-a-function-5feo",
+    "hash": "0341acbcf2e0b3cf59383bbe974357893008adc5f9c0bf956c16913b2558f1e7",
+    "published": true,
+    "zenn_published_at": "2026-08-06T21:39:00+09:00",
+    "synced_at": "2026-08-16T13:52:37.395Z"
+  },
+  "articles/seseragi-effect-visible-world.md": {
+    "id": 4410365,
+    "url": "https://dev.to/kentaromorishita/i-dont-want-to-eliminate-side-effects-i-want-to-see-them-2hol",
+    "hash": "6cb3eb3c1f3647c0562dc5b947e97b307225d4878cc304565d2e58de5f7d098c",
+    "published": true,
+    "zenn_published_at": "2026-08-05T21:37:00+09:00",
+    "synced_at": "2026-08-16T13:52:39.864Z"
+  },
+  "articles/seseragi-formatter-kimo.md": {
+    "id": 4410384,
+    "url": "https://dev.to/kentaromorishita/i-kept-calling-my-formatter-ugly-until-i-realized-formatting-is-grammar-3k7p",
+    "hash": "28bec946786137c7666deec3e3eb9f845ab1331a316df930c465009efd2ed151",
+    "published": true,
+    "zenn_published_at": "2026-08-11T23:06:00+09:00",
+    "synced_at": "2026-08-16T13:52:42.379Z"
+  },
+  "articles/seseragi-function-definition-information.md": {
+    "id": 4410388,
+    "url": "https://dev.to/kentaromorishita/what-if-a-function-definition-looked-like-its-type-4b8c",
+    "hash": "f163be786be924aab2d26bea7c6265179e70df6ad59f719632fcf2f208b2b0b4",
+    "published": true,
+    "zenn_published_at": null,
+    "synced_at": "2026-08-16T13:53:16.355Z"
+  },
+  "articles/seseragi-if-to-match.md": {
+    "id": 4410389,
+    "url": "https://dev.to/kentaromorishita/i-tried-to-eliminate-if-i-ended-up-putting-match-in-my-language-41b6",
+    "hash": "45d652fdd97952b0f26ece97f977723fad445df49bcf766925438f9da718eb50",
+    "published": true,
+    "zenn_published_at": "2026-08-01T11:24:00+09:00",
+    "synced_at": "2026-08-16T13:53:16.724Z"
+  },
+  "articles/seseragi-language-and-spacing.md": {
+    "id": 4410392,
+    "url": "https://dev.to/kentaromorishita/im-building-a-programming-language-and-somehow-i-keep-obsessing-over-spacing-1mnl",
+    "hash": "7fe108900e6ec6765193266f9c955683caeacaa8fcf041c0c3dad77b56ff214e",
+    "published": true,
+    "zenn_published_at": "2026-08-13T18:23:00+09:00",
+    "synced_at": "2026-08-16T13:53:50.355Z"
+  },
+  "articles/seseragi-not-fp-label.md": {
+    "id": 4410393,
+    "url": "https://dev.to/kentaromorishita/is-seseragi-a-functional-programming-language-im-not-sure-738",
+    "hash": "de6b6844144fd62e218ce8d47a75bf87fcce40106fb55457edd5bf44a19387aa",
+    "published": true,
+    "zenn_published_at": "2026-08-05T08:16:00+09:00",
+    "synced_at": "2026-08-16T13:53:52.816Z"
+  },
+  "articles/seseragi-null-maybe.md": {
+    "id": 4410396,
+    "url": "https://dev.to/kentaromorishita/why-does-null-get-to-pretend-its-a-normal-value-2cpj",
+    "hash": "b5e413fcbc23e914717c62ca24f5cbb550b39feca5e8be0b3ba2c9de7c777935",
+    "published": true,
+    "zenn_published_at": "2026-08-03T21:34:00+09:00",
+    "synced_at": "2026-08-16T13:54:26.530Z"
+  },
+  "articles/seseragi-ordinary-features-compose.md": {
+    "id": 4410397,
+    "url": "https://dev.to/kentaromorishita/the-best-feeling-is-when-ordinary-features-compose-into-something-bigger-17cn",
+    "hash": "2ec81132cbec3a9ac3f31dd023dc5d6013ca5ee2edcad99fbda7765e033fa4ae",
+    "published": true,
+    "zenn_published_at": "2026-08-06T08:14:00+09:00",
+    "synced_at": "2026-08-16T13:54:29.044Z"
+  },
+  "articles/seseragi-playground-is-fun.md": {
+    "id": 4410401,
+    "url": "https://dev.to/kentaromorishita/my-language-playground-somehow-turned-into-a-place-to-build-web-apps-87a",
+    "hash": "a9c94a4f0e1b371908c1b1d5d4f782ee70def15ab1cc62eb694debed062552f5",
+    "published": true,
+    "zenn_published_at": "2026-08-08T11:17:00+09:00",
+    "synced_at": "2026-08-16T13:55:00.552Z"
+  },
+  "articles/seseragi-rust-without-rust.md": {
+    "id": 4410403,
+    "url": "https://dev.to/kentaromorishita/i-can-barely-read-rust-but-im-building-a-compiler-in-rust-1d59",
+    "hash": "6f2c37cab9a81e132c43ac6003c666bf874664a8763c289c3074ff629e207b23",
+    "published": true,
+    "zenn_published_at": "2026-08-10T21:36:00+09:00",
+    "synced_at": "2026-08-16T13:55:03.073Z"
+  },
+  "articles/seseragi-state-management-religion.md": {
+    "id": 4410408,
+    "url": "https://dev.to/kentaromorishita/why-does-state-management-suddenly-need-a-whole-new-programming-model-1792",
+    "hash": "53f3d11b6b00738e3221a0c66e8ee18bc2e634a86e6295aee81688b53158aa76",
+    "published": true,
+    "zenn_published_at": "2026-08-07T21:46:00+09:00",
+    "synced_at": "2026-08-16T13:55:34.642Z"
+  },
+  "articles/seseragi-state-shape.md": {
+    "id": 4410409,
+    "url": "https://dev.to/kentaromorishita/if-there-are-four-states-why-not-write-four-states-27do",
+    "hash": "3147eb9569cb12e486d08ca56d4a3301784f386ee7be67f01531b567ec349708",
+    "published": true,
+    "zenn_published_at": "2026-08-03T08:17:00+09:00",
+    "synced_at": "2026-08-16T13:55:37.030Z"
+  },
+  "articles/seseragi-typescript-is-backend.md": {
+    "id": 4410411,
+    "url": "https://dev.to/kentaromorishita/typescript-is-a-backend-not-the-language-db9",
+    "hash": "8fcdd87f9e73d069907d53579d940fb4e5894c3e7b781a1341e425e8abcbf78e",
+    "published": true,
+    "zenn_published_at": "2026-08-09T11:31:00+09:00",
+    "synced_at": "2026-08-16T13:56:08.653Z"
+  },
+  "articles/seseragi-typescript-too-flexible.md": {
+    "id": 4410412,
+    "url": "https://dev.to/kentaromorishita/typescript-can-express-almost-anything-thats-part-of-the-problem-28je",
+    "hash": "2cad38385fd5a37eeebfe60e9a97521a093327b2a53346f5117748f5d7dd5921",
+    "published": true,
+    "zenn_published_at": "2026-08-02T11:08:00+09:00",
+    "synced_at": "2026-08-16T13:56:11.163Z"
+  },
+  "articles/seseragi-ui-same-language.md": {
+    "id": 4410416,
+    "url": "https://dev.to/kentaromorishita/why-should-the-language-change-the-moment-i-build-a-ui-fgd",
+    "hash": "bab2910b8fed1c9172c301a9566d34301a7dd2a739fbaec4ec443dd3d709fdb6",
+    "published": true,
+    "zenn_published_at": "2026-08-07T08:19:00+09:00",
+    "synced_at": "2026-08-16T13:56:42.629Z"
+  },
+  "articles/seseragi-values-and-pipelines.md": {
+    "id": 4410418,
+    "url": "https://dev.to/kentaromorishita/what-if-programs-were-mostly-just-values-flowing-through-functions-3ebb",
+    "hash": "95c8e5e3a3474406bfa6eeba51cf89edc007efd869987035fef64dc26d70abcc",
+    "published": true,
+    "zenn_published_at": "2026-08-04T08:21:00+09:00",
+    "synced_at": "2026-08-16T13:56:45.028Z"
   }
 }
