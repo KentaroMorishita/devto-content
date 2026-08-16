@@ -39,6 +39,7 @@ for (const file of files) {
     url: result.url ?? previous?.url ?? null,
     hash,
     published: metadata.published,
+    date: metadata.date ?? previous?.date ?? null,
     synced_at: new Date().toISOString(),
   };
 
@@ -122,6 +123,10 @@ function parseArticle(source, file) {
     throw new Error(`${file}: devto_id must be an integer`);
   }
 
+  if (metadata.date != null && typeof metadata.date !== "string") {
+    throw new Error(`${file}: date must be an ISO 8601 date/time string`);
+  }
+
   return {
     metadata,
     body: source.slice(match[0].length),
@@ -164,7 +169,7 @@ function parseTags(value) {
 function toApiArticle(metadata, body) {
   const article = {
     title: metadata.title,
-    body_markdown: body,
+    body_markdown: withPublicationDate(metadata.date, body),
     published: metadata.published,
     tags: metadata.tags.join(","),
   };
@@ -176,6 +181,13 @@ function toApiArticle(metadata, body) {
   }
 
   return article;
+}
+
+function withPublicationDate(date, body) {
+  if (!date) return body;
+
+  const normalizedBody = body.replace(/^\r?\n/, "");
+  return `---\ndate: ${JSON.stringify(date)}\n---\n\n${normalizedBody}`;
 }
 
 async function request(endpoint, method, body) {
