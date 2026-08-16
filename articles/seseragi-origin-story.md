@@ -1,6 +1,6 @@
 ---
 title: "I Didn't Mean to Build a Programming Language"
-published: false
+published: true
 date: "2026-07-31T08:12:00+09:00"
 tags: programming, typescript, codex, seseragi
 description: "I didn't set out to build a compiler. I kept asking why everyday code had to feel this way, and eventually those questions turned into Seseragi."
