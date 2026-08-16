@@ -1,12 +1,12 @@
 ---
-title: "I'm Building a Programming Language"
+title: "I Didn't Mean to Build a Programming Language"
 published: false
 date: "2026-07-31T08:12:00+09:00"
 tags: programming, typescript, codex, seseragi
 description: "I didn't set out to build a compiler. I kept asking why everyday code had to feel this way, and eventually those questions turned into Seseragi."
 series:
 main_image:
-canonical_url: "https://zenn.dev/ken_morishita/articles/seseragi-origin-story"
+canonical_url:
 ---
 
 I'm building a programming language.
@@ -17,7 +17,7 @@ Not even close.
 
 I was just writing ordinary web applications and constantly thinking things like:
 
-"Why do I have to write it this way only here?"
+"Why do I have to write it this way here?"
 
 or:
 
@@ -43,7 +43,7 @@ In 2024, I wrote this article on Qiita.
 
 https://qiita.com/KentaroMorishita/items/6329d20fbc6f98f72864
 
-The title alone already suggests that something was wrong with me.
+The title alone probably tells you I was already heading somewhere weird.
 
 I don't think I hated `if` itself. What bothered me was the feeling of tracing conditional branches as **statements**.
 
@@ -175,7 +175,7 @@ I'm not trying to show anything particularly exotic with this example.
 
 Actually, the opposite.
 
-What makes me happy is that it just looks readable.
+What I like is that it just looks readable.
 
 `match` is an expression. Functions produce values. `$` removes some unnecessary parentheses. And the point where the program finally touches the outside world is visibly marked as `effect`.
 
@@ -187,7 +187,7 @@ That feels surprisingly good.
 
 At first, just getting the compiler to run small programs was exciting enough.
 
-Then Signal appeared. DOM rendering started working. HTML became something I could construct as an ordinary value. Forms started working too.
+Then I added Signal. DOM rendering started working. HTML became something I could construct as an ordinary value. Forms started working too.
 
 Now the Playground Tour includes code like this:
 
@@ -315,4 +315,4 @@ If any of this sounds interesting, try the Playground.
 
 I'd also be genuinely happy if you just looked through the GitHub Issues.
 
-**Or, even better, help me run Codex on some of them.**
+And if you're feeling adventurous, pick one and try it with Codex. That's basically the workflow I'm using anyway.
