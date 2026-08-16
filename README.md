@@ -18,6 +18,15 @@ DEV.to API
 
 `main` is the publish source of truth. Write and review articles on `draft`, then merge them into `main`.
 
+## Zenn correspondence
+
+DEV.to articles are English counterparts of the existing Zenn articles.
+
+- Keep a 1:1 correspondence between Zenn and DEV.to articles.
+- Use the same article filename/slug when practical so the two repositories are easy to compare.
+- Copy the Zenn publication date/time into `date`.
+- The English article may adjust its title, introduction, examples, and phrasing for an international audience rather than being a literal translation.
+
 ## Articles
 
 Put Markdown files under `articles/`.
@@ -26,6 +35,7 @@ Put Markdown files under `articles/`.
 ---
 title: "Why Seseragi Has No return"
 published: false
+date: "2026-08-16T00:00:00+09:00"
 tags: seseragi, programming, webdev
 description: "An example description"
 series:
@@ -40,12 +50,15 @@ Supported front matter:
 
 - `title` — required
 - `published` — `false` keeps the article as a DEV.to draft; `true` publishes it
+- `date` — publication date/time copied from the corresponding Zenn article; use an ISO 8601 string
 - `tags` — comma-separated, up to 4 tags
 - `description`
 - `series`
 - `main_image`
 - `canonical_url`
 - `devto_id` — optional escape hatch for manually binding a file to an existing DEV.to article
+
+The publisher forwards `date` through Forem article front matter so historical Zenn articles can preserve their original publication timing where DEV.to accepts it. Verify the first backdated publication before bulk publishing older articles.
 
 ## DEV.to API key
 
