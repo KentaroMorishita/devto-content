@@ -27,6 +27,8 @@ I kept digging into those small annoyances instead of ignoring them, one by one,
 
 It's called **Seseragi**.
 
+`Seseragi` (せせらぎ) is a Japanese word for the gentle sound or flow of a small stream. I wanted my programming language to have a Japanese name.
+
 https://github.com/KentaroMorishita/seseragi
 
 https://seseragi.vercel.app/
